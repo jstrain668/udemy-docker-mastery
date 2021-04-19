@@ -6,8 +6,17 @@ services:
     ports:
       - '8080:80' # expose 80 on host and sent to 80 in container
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles       
+      - drupal-sites:/var/www/html/sites      
+      - drupal-themes:/var/www/html/themes
   datasource:
     image: postgres  # this will use postgres latest
     environment:
       - POSTGRES_PASSWORD=mypasswd
+
+volumes: 
+  drupal-modules:
+  drupal-profiles:
+  drupal-sites:
+  drupal-themes:
